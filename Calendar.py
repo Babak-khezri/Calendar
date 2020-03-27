@@ -1,6 +1,6 @@
 from calendar import month
 from click import getchar
-from colorama import Fore ,init
+from colorama import Fore ,init , Style
 from os import system
 init(convert = True)
 print(Fore.BLUE + "Welcome to my Calendar \nEnter the year : ")
@@ -27,11 +27,11 @@ def monthes():#get the monthes day and put in list unsorted
 def printer(calendar):#print the calendar and sort it
     system('cls')
     for i in range(8):
-        print(Fore.GREEN + "   {}          {}              {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
+        print(Fore.CYAN + "   {}            {}            {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
     for i in range(24,32):
-        print(Fore.YELLOW + "   {}          {}              {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
-    for i in range(40,48):
-        print(Fore.RED + "   {}          {}              {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
-    for i in range(56,64):
-        print(Fore.CYAN + "   {}          {}              {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
+        print(Fore.GREEN + "   {}            {}            {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
+    for i in range(48,56):
+        print(Fore.YELLOW + "   {}            {}            {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
+    for i in range(72,80):
+        print(Fore.RED + "   {}            {}            {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
 monthes()
