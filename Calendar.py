@@ -2,9 +2,8 @@ from calendar import month
 from click import getchar
 from colorama import Fore ,init , Style
 from os import system
+from tkinter import Entry , mainloop , Label , Tk , Button
 init(convert = True)
-print(Fore.BLUE + "Welcome to my Calendar \nEnter the year : ")
-year = int(input())
 def monthes():#get the monthes day and put in list unsorted
     calendar = []
     for monthes in range(1,13):
@@ -34,4 +33,18 @@ def printer(calendar):#print the calendar and sort it
         print(Fore.YELLOW + "   {}            {}            {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
     for i in range(72,80):
         print(Fore.RED + "   {}            {}            {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
-monthes()
+def getyear():
+    global year
+    year = int(enter.get())#get the year
+    win.destroy()#close the window
+    monthes()#show the calender
+win = Tk()
+win.title("Calender")
+Label(win,text = "<< Wellcome to my calender >>",fg = "purple",font = ("Aryal",32,'bold')).pack()
+Label(win,text = "Enter the year : ",font = ("Aryal",32,'bold')).pack()
+enter = Entry(win,font = ("Aryal",32,'bold'),bg = "pink")
+enter.pack()
+but = Button(win,text = "ENTER",bg = "green",font = ("Aryal" ,25,'bold'))
+but.config(bd = 10 ,padx = 25 ,pady = 15 ,command = getyear,activebackground = "red")
+but.pack()
+mainloop()
