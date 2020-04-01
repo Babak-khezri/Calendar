@@ -3,7 +3,10 @@ from click import getchar
 from colorama import Fore ,init , Style
 from os import system
 from tkinter import Entry , mainloop , Label , Tk , Button , PhotoImage
+from pyfiglet import figlet_format
 init(convert = True)
+text = figlet_format("  C A L E N D E R" , font = "slant")
+print(Fore.LIGHTMAGENTA_EX + text)
 def monthes():#get the monthes day and put in list unsorted
     calendar = []
     for monthes in range(1,13):
