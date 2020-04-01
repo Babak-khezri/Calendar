@@ -22,6 +22,8 @@ def monthes():#get the monthes day and put in list unsorted
         if len(mon[0]) != 20:#make is better look
             for i in range(20-len(mon[0])):
                 mon[0] += " "
+        if len(mon) == 7:
+            mon.append(" " * 20)
         calendar.extend(mon)
     printer(calendar)
     print(Fore.LIGHTMAGENTA_EX + "Any key to exit : ...")
