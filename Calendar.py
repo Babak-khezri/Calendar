@@ -5,9 +5,11 @@ from os import system
 from tkinter import Entry , mainloop , Label , Tk , Button , PhotoImage
 from pyfiglet import figlet_format
 init(convert = True)
-text = figlet_format("  C A L E N D E R" , font = "slant")
-print(Fore.LIGHTMAGENTA_EX + text)
+enter = None
+win = Tk()
 def monthes():#get the monthes day and put in list unsorted
+    year = int(enter.get())
+    win.destroy()
     calendar = []
     for monthes in range(1,13):
         mon = month(year,monthes)
@@ -38,24 +40,23 @@ def printer(calendar):#print the calendar and sort it
         print(Fore.YELLOW + "   {}            {}            {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
     for i in range(72,80):
         print(Fore.RED + "   {}            {}            {}".format(calendar[i],calendar[i + 8],calendar[i + 16]))
-def getyear():
-    global year
-    year = int(enter.get())#get the year
-    win.destroy()#close the window
-    monthes()#show the calender
-win = Tk()
-win.title("Calender")
-win.geometry("700x600")
-photo = PhotoImage(file = "calen.png")
-win.iconphoto(False , photo)
-Label(win,text = "<< Wellcome to my calender >>",fg = "purple",font = ("Aryal",32,'bold')).pack()
-background = Label(win, image=photo)
-background.config(font = (20))
-background.pack()
-Label(win,text = "Enter the year : ",font = ("Aryal",32,'bold')).pack()
-enter = Entry(win,font = ("Aryal",32,'bold'),bg = "pink")
-enter.pack()
-but = Button(win,text = "ENTER",bg = "green",font = ("Aryal" ,25,'bold'))
-but.config(bd = 10 ,padx = 25 ,pady = 15 ,command = getyear,activebackground = "red")
-but.pack()
-mainloop()
+def tkinter():
+    text = figlet_format("  C A L E N D E R" , font = "slant")
+    print(Fore.LIGHTMAGENTA_EX + text)
+    win.title("Calender")
+    win.geometry("700x600")
+    photo = PhotoImage(file = "calen.png")
+    win.iconphoto(False , photo)
+    Label(win,text = "<< Wellcome to my calender >>",fg = "purple",font = ("Aryal",32,'bold')).pack()
+    background = Label(win, image=photo)
+    background.config(font = (20))
+    background.pack()
+    Label(win,text = "Enter the year : ",font = ("Aryal",32,'bold')).pack()
+    global enter
+    enter = Entry(win,font = ("Aryal",32,'bold'),bg = "pink")
+    enter.pack()
+    but = Button(win,text = "ENTER",bg = "green",font = ("Aryal" ,25,'bold'))
+    but.config(bd = 10 ,padx = 25 ,pady = 15 ,command = monthes,activebackground = "red")
+    but.pack()
+    mainloop()
+tkinter()
